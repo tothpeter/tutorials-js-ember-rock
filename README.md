@@ -54,3 +54,4 @@ Specify what it takes to deploy your app.
 ## Usefull generators
 - ember generate route bands/band --path=':slug'
 - ember generate template bands/index
+- ember generate component star-rating
