@@ -44,6 +44,14 @@ export default Ember.Route.extend({
     return bands;
   },
 
+  afterModel: function(model) {
+    var bands = model;
+    if (bands.get('length') === 1) {
+      console.log("csak 1");
+      this.transitionTo('bands.band', bands.get('firstObject'));
+    }
+  },
+
   actions: {
     createBand: function() {
       var name = this.get('controller').get('name');
