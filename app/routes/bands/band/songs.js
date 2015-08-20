@@ -2,9 +2,9 @@ import Ember from 'ember';
 import Song from '../../../models/song';
 
 export default Ember.Route.extend({
-  model: function() {
-    return this.modelFor('bands.band');
-  },
+  // model: function() {
+  //   return this.modelFor('bands.band');
+  // },
 
   actions: {
     createSong: function() {
