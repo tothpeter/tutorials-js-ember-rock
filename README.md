@@ -55,3 +55,5 @@ Specify what it takes to deploy your app.
 - ember generate route bands/band --path=':slug'
 - ember generate template bands/index
 - ember generate component star-rating
+- ember generate adapter application
+- ember serve --proxy http://api.rockandrollwithemberjs.com

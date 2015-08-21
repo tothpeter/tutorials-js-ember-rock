@@ -1,5 +1,15 @@
 /* jshint node: true */
 
+var contentSecurityPolicy = {
+  'default-src': "'none'",
+  'script-src': "'self'",
+  'font-src': "'self'",
+  'connect-src': "'self' localhost:* api.rockandrollwithemberjs.com:*",
+  'img-src': "'self'",
+  'style-src': "'self' 'unsafe-inline'",
+  'media-src': "'self'"
+};
+
 module.exports = function(environment) {
   var ENV = {
     modulePrefix: 'rarwe',
@@ -25,17 +35,20 @@ module.exports = function(environment) {
     // ENV.APP.LOG_TRANSITIONS = true;
     // ENV.APP.LOG_TRANSITIONS_INTERNAL = true;
     // ENV.APP.LOG_VIEW_LOOKUPS = true;
+    ENV.apiHost = 'http://api.rockandrollwithemberjs.com';
+    ENV.contentSecurityPolicy = contentSecurityPolicy;
+    ENV.contentSecurityPolicy['script-src'] = "'self' 'unsafe-eval'";
 
-    ENV.contentSecurityPolicy = {
-      'default-src': "'none'",
-      'script-src': "'self' 'unsafe-inline' 'unsafe-eval'",
-      'font-src': "'self'",
-      'connect-src': "'self'",
-      'img-src': "'self'",
-      'report-uri':"'localhost'",
-      'style-src': "'self' 'unsafe-inline'",
-      'frame-src': "'none'"
-    };
+    // ENV.contentSecurityPolicy = {
+    //   'default-src': "'none'",
+    //   'script-src': "'self' 'unsafe-inline' 'unsafe-eval'",
+    //   'font-src': "'self'",
+    //   'connect-src': "'self'",
+    //   'img-src': "'self'",
+    //   'report-uri':"'localhost'",
+    //   'style-src': "'self' 'unsafe-inline'",
+    //   'frame-src': "'none'"
+    // };
   }
 
   if (environment === 'test') {
