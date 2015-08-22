@@ -1,18 +1,40 @@
-<ul class="list-group songs">
+<div class="list-group songs">
   {{#if canCreateSong}}
-    <li class="list-group-item">
+    <div class="btn-group song-filter-search-panel" role="group">
+      <div class="sorting-panel">
+        <button type="button" class="btn btn-default sort-rating-desc sorting-button" {{action "setSorting" "ratingDesc"}}>
+          Rating
+          <span class="glyphicon glyphicon-arrow-down"></span>
+        </button>
+        <button type="button" class="btn btn-default sort-rating-asc sorting-button" {{action "setSorting" "ratingAsc"}}>
+          Rating
+          <span class="glyphicon glyphicon-arrow-up"></span>
+        </button>
+        <button type="button" class="btn btn-default sort-title-desc sorting-button" {{action "setSorting" "titleDesc"}}>
+          Title
+          <span class="glyphicon glyphicon-arrow-down"></span>
+        </button>
+        <button type="button" class="btn btn-default sort-title-asc sorting-button" {{action "setSorting" "titleAsc"}}>
+          Title
+          <span class="glyphicon glyphicon-arrow-up"></span>
+        </button>
+      </div>
+      <div class="clearfix"></div>
+    </div>
+
+    <div class="list-group-item">
       <form class="new-song-form" {{action "createSong" on="submit"}}>
         {{input type="text" class="new-song" placeholder="New song" value=title}}
         <button class="btn btn-primary btn-sm new-song-button" disabled={{isAddButtonDisabled}}>Add</button>
       </form>
-    </li>
+    </div>
   {{/if}}
-  {{#each model.songs as |song|}}
-    <li class="list-group-item song">
+  {{#each sortedSongs as |song|}}
+    <div class="list-group-item song">
       {{song.title}}
       {{star-rating item=song rating=song.rating setAction="updateRating"}}
       {{!-- {{star-rating item=song rating=song.rating on-click=(action "updateRating")}} --}}
-    </li>
+    </div>
   {{/each}}
   {{#unless canCreateSong}}
     <div class="list-group-item empty-list">
@@ -21,4 +43,4 @@
       </div>
     </div>
   {{/unless}}
-</ul>
+</div>
