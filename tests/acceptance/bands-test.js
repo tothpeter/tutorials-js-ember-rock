@@ -2,6 +2,7 @@ import Ember from 'ember';
 import Pretender from 'pretender';
 import { module, test } from 'qunit';
 import startApp from 'rarwe/tests/helpers/start-app';
+import httpStubs from '../helpers/http-stubs';
 
 var application,
     server;
@@ -42,23 +43,14 @@ test('List bands', function(assert) {
 
 test('Create a new band', function(assert) {
   server = new Pretender(function() {
-    this.get('/bands', function() {
-      var bands = JSON.stringify({
-        bands: [
-          { id: 1, name: 'Radiohead' },
-        ]
-      });
-    
-      return [200, {"Content-Type": "application/json"}, bands];
+    httpStubs.stubBands(this, {
+      bands: [
+        { id: 1, name: 'Radiohead' }
+      ]
     });
-
-    this.post('/bands', function() {
-      var band = JSON.stringify({
-        band: { id: 2, name: 'Long Distance Calling' }
-      });
     
-    return [200, {"Content-Type": "application/json"}, band];
-    });
+    httpStubs.stubCreateBand(this);
+    
   });
 
   visit('/bands');
