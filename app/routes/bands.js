@@ -8,7 +8,6 @@ export default Ember.Route.extend({
   afterModel: function(model) {
     var bands = model;
     if (bands.get('length') === 1) {
-      console.log("csak 1");
       this.transitionTo('bands.band', bands.get('firstObject'));
     }
   },
