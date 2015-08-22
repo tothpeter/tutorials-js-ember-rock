@@ -98,13 +98,11 @@ test('Create a new song in two steps', function(assert) {
     });
   });
 
-  visit('/');
-
-  click('.band-link:contains("Radiohead")');
+  selectBand('Radiohead');
   click('a:contains("create one")');
   fillIn('.new-song', 'Killer Cars');
+  submit('.new-song-form');
 
-  triggerEvent('.new-song-form', 'submit');
   andThen(function() {
     assert.equal(find('.songs .song:contains("Killer Cars")').length, 1, "Creates the song and displays it in the list");
   });
