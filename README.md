@@ -58,3 +58,4 @@ Specify what it takes to deploy your app.
 - ember generate adapter application
 - ember serve --proxy http://api.rockandrollwithemberjs.com
 - ember generate template loading
+- ember generate helper capitalize-words

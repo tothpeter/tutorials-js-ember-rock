@@ -1,4 +1,5 @@
 import Ember from 'ember';
+import { capitalizeWords as capitalize } from '../../../helpers/capitalize-words';
 // import wait from '../../../utils/wait';
 
 export default Ember.Route.extend({
@@ -9,7 +10,8 @@ export default Ember.Route.extend({
   actions: {
     didTransition: function() {
       var band = this.modelFor('bands.band');
-      Ember.$(document).attr('title', '%@ songs - Rock &amp; Roll'.fmt(band.get('name')));
+      var name = capitalize(band.get('name'));
+      Ember.$(document).attr('title', '%@ songs - Rock &amp; Roll'.fmt(name));
     },
 
     createSong: function() {
