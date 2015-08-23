@@ -57,3 +57,4 @@ Specify what it takes to deploy your app.
 - ember generate component star-rating
 - ember generate adapter application
 - ember serve --proxy http://api.rockandrollwithemberjs.com
+- ember generate template loading
